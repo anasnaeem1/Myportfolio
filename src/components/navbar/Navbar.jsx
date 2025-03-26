@@ -22,22 +22,23 @@ const Navbar = () => {
   ];
 
   return (
-    <>
-      <div className="h-[98px] w-full"></div>
-      <header className="fixed bg-tranparent w-full top-0 left-0">
-        <div className="flex items-center justify-between h-[98px] px-6">
-          {/* Logo */}
-          <span
-            className={`cursor-pointer text-3xl font-bold tracking-wide text-[#b9afa2] ${tinos.className}`}
-          >
-            Anas <span className="text-[#b9afa2]">N</span>
-          </span>
+    <div className="text-blue-300 bg-white p-3">Navbar</div>
+    // <>
+    //   <div className="h-[98px] w-full"></div>
+    //   <header className="fixed bg-tranparent w-full top-0 left-0">
+    //     <div className="flex items-center justify-between h-[98px] px-6">
+    //       {/* Logo */}
+    //       <span
+    //         className={`cursor-pointer text-3xl font-bold tracking-wide text-[#b9afa2] ${tinos.className}`}
+    //       >
+    //         Anas <span className="text-[#b9afa2]">N</span>
+    //       </span>
 
-          {/* Theme Switch */}
-          <Switch />
-        </div>
-      </header>
-    </>
+    //       {/* Theme Switch */}
+    //       <Switch />
+    //     </div>
+    //   </header>
+    // </>
   );
 };
 
