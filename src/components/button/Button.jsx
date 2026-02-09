@@ -5,7 +5,7 @@ const Button = () => {
   return (
     <StyledWrapper>
       <button>
-        <p>About me</p>
+        <p className="main-text-color" >About me</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ const Button = () => {
 
 const StyledWrapper = styled.div`
   button {
-    --primary-color: #ffff;
+    --primary-color: --background;
     --hovered-color: #c84747;
     position: relative;
     display: flex;

@@ -1,83 +1,40 @@
-import Image from "next/image";
-import AnasN from "../../public/AnasN.jpg";
-import Button from "../components/button/Button";
-import { Inter } from "next/font/google";
-import "./globals.css";
-// import { Playfair_Display } from "next/font/google";
-// import { Zen_Kaku_Gothic_New } from "next/font/google";
-
-// const zenKakuGothic = Zen_Kaku_Gothic_New({
-//   weight: ["400", "500", "700"], // Choose desired font weights
-//   subsets: ["latin"], // Specify subsets
-//   style: "normal",
-// });
-
-// const playfair = Playfair_Display({
-//   weight: ["400", "500", "700"],
-//   subsets: ["latin"],
-//   style: "normal",
-// });
-
-// const inter = Inter({
-//   weight: ["400", "500", "700"],
-//   subsets: ["latin"],
-//   style: "normal",
-// });
+"use client";
+import ServiceSetion from "../components/serviceSection/ServiceSection";
+import MyWork from "../components/work/MyWork";
+import Hero from "../components/hero/Hero";
+import SkillsSection from "../components/skills/Skills";
 
 export default function Home() {
   return (
-    <div className="text-blue bg-white">hello world</div>
-//     <>
-//       <section
-//         className="flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-100px)]
-//  px-6 md:px-12 lg:px-20 gap-12 md:gap-20"
-//       >
-//         {/* Image Section */}
-//         <div className="flex-shrink-0">
-//           <Image
-//             src={AnasN}
-//             height={500}
-//             width={500}
-//             alt="Anas N"
-//             className="object-contain opacity-95"
-//           />
-//         </div>
+    <main className="overflow-x-hidden relative w-full main-bg-color">
+      {/* Smooth scroll container */}
+      <div className="scroll-smooth">
+        {/* Hero Section - Full Viewport Height */}
+        <section className="relative w-full min-h-[calc(100vh-98px)] h-[calc(100vh-98px)]">
+          <Hero />
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-[#b9afa2]/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-[#b9afa2]/50 rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </section>
 
-//         {/* Text Section */}
-//         <div className="max-w-[800px] w-full flex flex-col gap-12 text-center md:text-left">
-//           <h3
-//             // className={`text-4xl md:text-[40px] font-normal tracking-wide text-[#b9afa2] ${zenKakuGothic.className}`}
-//           >
-//             Anas N is a creative web developer who loves coding.
-//           </h3>
+        {/* Service Section */}
+        <section className="relative w-full">
+          <ServiceSetion />
+        </section>
 
-//           <div className="flex flex-col gap-6">
-//             <p
-//               // className={`text-xl md:text-[20px] font-normal tracking-wide text-[#b9afa2] ${zenKakuGothic.className}`}
-//             >
-//               Born and raised in Karachi, Pakistan, I began my web development
-//               journey in 2023. Currently, I'm seeking opportunities to grow my
-//               skills. My future plan is to dive deeper into web development and
-//               explore more programming languages over time.
-//             </p>
+        {/* Skills Section */}
+        <section className="relative w-full">
+          <SkillsSection />
+        </section>
 
-//             {/* Button Section */}
-//             <div className="flex justify-center md:justify-start">
-//               <Button />
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className="flex items-center justify-center h-[250px] overflow-hidden relative">
-//         <div className="scrolling-text">
-//           <h1
-//             // className={`text-4xl md:text-8xl font-normal tracking-wide text-[#b9afa2] ${playfair.className}`}
-//           >
-//             Services Provide For My Clients.
-//           </h1>
-//         </div>
-//       </section>
-//     </>
+        {/* My Work Section */}
+        <section className="relative w-full">
+          <MyWork />
+        </section>
+      </div>
+    </main>
   );
 }
