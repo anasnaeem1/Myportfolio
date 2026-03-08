@@ -7,7 +7,7 @@ const Checkbox = ({ isMenuOpen, handleClick }) => {
   return (
     <div
       onClick={handleClick}
-      className="hover:bg-gray-800 hover:opacity-80 opacity-90 transition-all duration-300 p-2 flex items-center justify-center rounded-full"
+      className="hover:bg-gray-800 hover:opacity-80 opacity-90 transition-all duration-300 p-1.5 sm:p-2 flex items-center justify-center rounded-full min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0"
     >
       <StyledWrapper>
         <label className="hamburger">
@@ -40,8 +40,20 @@ const StyledWrapper = styled.div`
   }
 
   .hamburger svg {
-    height: 3em;
+    height: 2em;
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (min-width: 640px) {
+    .hamburger svg {
+      height: 2.5em;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hamburger svg {
+      height: 3em;
+    }
   }
   // #171717
   .line {

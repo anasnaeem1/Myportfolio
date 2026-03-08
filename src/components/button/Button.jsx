@@ -1,11 +1,57 @@
 "use client";
-import styled from "styled-components";
 
-const Button = () => {
+const SIZE_CLASSES = {
+  sm: {
+    button: "text-sm gap-1.5",
+    icon: "w-3.5 h-3.5",
+  },
+  md: {
+    button: "text-[18px] gap-2",
+    icon: "w-[18px] h-[18px]",
+  },
+  lg: {
+    button: "text-[22px] gap-2.5",
+    icon: "w-5 h-5",
+  },
+};
+
+const Button = ({
+  children,
+  type = "button",
+  disabled = false,
+  size = "md",
+  className,
+  "aria-label": ariaLabel,
+  ...rest
+}) => {
+  const text = typeof children === "string" ? children : "";
+  const sizeKey = SIZE_CLASSES[size] ? size : "md";
+  const { button: btnCls, icon: iconCls } = SIZE_CLASSES[sizeKey];
+
   return (
-    <StyledWrapper>
-      <button>
-        <p className="main-text-color" >About me</p>
+    <div className={className}>
+      <button
+        type={type}
+        disabled={disabled}
+        aria-label={ariaLabel}
+        className={`
+          btn-underline relative inline-flex items-center p-0 border-0 bg-transparent
+          font-semibold cursor-pointer
+          text-[var(--foreground)] transition-colors duration-200 ease-out
+          disabled:cursor-not-allowed disabled:opacity-50
+          focus:outline-none focus-visible:outline-2 focus-visible:outline-[#c84747] focus-visible:outline-offset-2
+          [&_>svg]:transition-all [&_>svg]:duration-200 [&_>svg]:ease-out
+          hover:[&_>svg]:translate-x-1 hover:[&_>svg]:text-[#c84747]
+          focus-visible:[&_>svg]:translate-x-1 focus-visible:[&_>svg]:text-[#c84747]
+          disabled:[&_>svg]:translate-x-0 disabled:[&_>svg]:!text-[var(--foreground)]
+          ${btnCls}
+          ${sizeKey === "sm" ? "btn-size-sm" : sizeKey === "lg" ? "btn-size-lg" : ""}
+        `}
+        {...rest}
+      >
+        <span className="btn-reveal-text text-inherit" data-text={text}>
+          {children}
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -14,78 +60,14 @@ const Button = () => {
           strokeWidth={4}
           strokeLinecap="round"
           strokeLinejoin="round"
+          className={`flex-shrink-0 text-[var(--foreground)] transition-all duration-200 ease-out ${iconCls}`}
+          aria-hidden
         >
           <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
       </button>
-    </StyledWrapper>
+    </div>
   );
 };
-
-const StyledWrapper = styled.div`
-  button {
-    --primary-color: --background;
-    --hovered-color: #c84747;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-    transition: color 0.3s ease-in-out;
-  }
-
-  button p {
-    position: relative;
-    font-size: 20px;
-    color: var(--primary-color);
-    margin: 0;
-  }
-
-  button::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 0;
-    bottom: -5px;
-    background: var(--hovered-color);
-    transition: width 0.3s ease-out;
-  }
-
-  button p::before {
-    content: "About me";
-    position: absolute;
-    width: 0%;
-    inset: 0;
-    color: var(--hovered-color);
-    overflow: hidden;
-    transition: width 0.3s ease-out;
-    white-space: nowrap; /* Prevents breaking into two lines */
-  }
-
-  button:hover::after {
-    width: 100%;
-  }
-
-  button:hover p::before {
-    width: 100%;
-  }
-
-  button svg {
-    width: 18px;
-    color: var(--primary-color);
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-
-  button:hover svg {
-    transform: translateX(4px);
-    color: var(--hovered-color);
-  }
-`;
 
 export default Button;

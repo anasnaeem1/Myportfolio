@@ -38,25 +38,21 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="relative w-full h-[98px]">
-        <div className="h-[98px] main-bg-color w-full fixed top-0 left-0"></div>
-      </div>
+      {/* <div className="relative w-full h-[72px]">
+        <div className="h-[72px] bg-transparent w-full fixed top-0 left-0" />
+      </div> */}
       <header className="fixed w-full top-0 left-0 bg-transparent z-50">
-        {/* Fullscreen Animated Menu */}
-
         <Menu isMenuOpen={isMenuOpen} />
-
-        {/* Navbar */}
-        <div className="flex items-center justify-between h-[98px] px-6">
+        {/* Nav bar (logo + menu icon) always on top so icon never disappears */}
+        <div className="relative z-[60] flex items-center justify-between h-[72px] max-w-6xl mx-auto px-5">
           <Link
             href="/"
-            className="text-3xl font-bold tracking-wide main-text-color"
+            className="text-2xl font-semibold tracking-tight main-text-color"
           >
             Anas <span className="main-text-color">N</span>
           </Link>
 
-          <div className="flex gap-6">
-            {/* Switch for Dark Mode Toggle */}
+          <div className="flex items-center gap-5">
             <Switch isMenuOpen={isMenuOpen} handleClick={handleMenu} />
           </div>
         </div>

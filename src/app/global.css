@@ -3,6 +3,9 @@
 :root {
   --background: #171717;
   --foreground: #b9afa2;
+  --resume-card-bg: #1c1b1a;
+  --resume-card-border: rgba(255, 255, 255, 0.08);
+  --resume-card-border-hover: rgba(191, 161, 129, 0.35);
 }
 
 .main-bg-color {
@@ -11,6 +14,58 @@
 
 .main-text-color {
   color: var(--foreground);
+}
+
+.resume-card {
+  background-color: var(--resume-card-bg);
+  border: 1px solid var(--resume-card-border);
+}
+.resume-card:hover {
+  border-color: var(--resume-card-border-hover);
+}
+
+/* Button hover text reveal (avoids styled-components FOUC on first load) */
+.btn-reveal-text {
+  position: relative;
+  display: inline-block;
+}
+.btn-reveal-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  overflow: hidden;
+  color: #c84747;
+  white-space: nowrap;
+  transition: width 0.25s ease-out;
+}
+button:hover:not(:disabled) .btn-reveal-text::before,
+button:focus-visible:not(:disabled) .btn-reveal-text::before {
+  width: 100%;
+}
+
+.btn-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #c84747;
+  transition: width 0.25s ease-out;
+}
+.btn-underline::after {
+  bottom: -4px;
+}
+.btn-underline.btn-size-sm::after {
+  bottom: -3px;
+}
+.btn-underline.btn-size-lg::after {
+  bottom: -5px;
+}
+button:hover:not(:disabled).btn-underline::after,
+button:focus-visible:not(:disabled).btn-underline::after {
+  width: 100%;
 }
 
 @font-face {

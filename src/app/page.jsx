@@ -10,7 +10,7 @@ export default function Home() {
       {/* Smooth scroll container */}
       <div className="scroll-smooth">
         {/* Hero Section - Full Viewport Height */}
-        <section className="relative w-full min-h-[calc(100vh-98px)] h-[calc(100vh-98px)]">
+        <section className="relative w-full">
           <Hero />
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
