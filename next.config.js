@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-    ],
+  compiler: {
+    styledComponents: true,
   },
-  // Vercel runs `next build` by default; no extra config required
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;

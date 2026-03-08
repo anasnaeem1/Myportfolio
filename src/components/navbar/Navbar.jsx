@@ -1,12 +1,8 @@
 "use client";
-import Image from "next/image";
+
 import Link from "next/link";
 import Switch from "../switch/Switch";
 import { Tinos } from "next/font/google";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Menu from "./Menu";
-import { usePathname } from "next/navigation";
 
 const tinos = Tinos({
   weight: "400",
@@ -14,51 +10,15 @@ const tinos = Tinos({
   style: "normal",
 });
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const [isCooldownActive, setIsCooldownActive] = useState(false);
-
-  const handleMenu = (event) => {
-    event.preventDefault();
-
-    if (isCooldownActive) return;
-
-    setIsMenuOpen(!isMenuOpen);
-
-    setIsCooldownActive(true);
-    setTimeout(() => {
-      setIsCooldownActive(false);
-    }, 700);
-  };
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
+export default function Navbar() {
   return (
-    <>
-      {/* <div className="relative w-full h-[72px]">
-        <div className="h-[72px] bg-transparent w-full fixed top-0 left-0" />
-      </div> */}
-      <header className="fixed w-full top-0 left-0 bg-transparent z-50">
-        <Menu isMenuOpen={isMenuOpen} />
-        {/* Nav bar (logo + menu icon) always on top so icon never disappears */}
-        <div className="relative z-[60] flex items-center justify-between h-[72px] max-w-6xl mx-auto px-5">
-          <Link
-            href="/"
-            className="text-2xl font-semibold tracking-tight main-text-color"
-          >
-            Anas <span className="main-text-color">N</span>
-          </Link>
-
-          <div className="flex items-center gap-5">
-            <Switch isMenuOpen={isMenuOpen} handleClick={handleMenu} />
-          </div>
-        </div>
-      </header>
-    </>
+    <header className="fixed top-0 left-0 w-full z-50 bg-[var(--background)]/80 backdrop-blur-sm border-b border-white/5">
+      <div className="max-w-6xl mx-auto h-14 px-4 flex items-center justify-between">
+        <Link href="/" className={`${tinos.className} text-xl font-semibold text-[var(--foreground)]`}>
+          Anas <span className="text-[var(--foreground)]">N</span>
+        </Link>
+        <Switch />
+      </div>
+    </header>
   );
-};
-
-export default Navbar;
+}
