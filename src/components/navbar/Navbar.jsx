@@ -1,45 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+
 import Link from "next/link";
 import Switch from "../switch/Switch";
 import { Tinos } from "next/font/google";
 
 const tinos = Tinos({
-  weight: "400", // Choose the weight (400, 700, etc.)
-  subsets: ["latin"], // Choose subsets (default: latin)
+  weight: "400",
+  subsets: ["latin"],
   style: "normal",
 });
 
-const Navbar = () => {
-  const NavLinks = [
-    { id: 1, label: "Home", url: "/" },
-    { id: 2, label: "Portfolio", url: "/portfolio" },
-    { id: 3, label: "Blog", url: "/blog" },
-    { id: 4, label: "About", url: "/about" },
-    { id: 5, label: "Contact", url: "/contact" },
-    { id: 6, label: "Dashboard", url: "/dashboard" },
-  ];
-
+export default function Navbar() {
   return (
-    <div className="text-blue-300 bg-white p-3">Navbar</div>
-    // <>
-    //   <div className="h-[98px] w-full"></div>
-    //   <header className="fixed bg-tranparent w-full top-0 left-0">
-    //     <div className="flex items-center justify-between h-[98px] px-6">
-    //       {/* Logo */}
-    //       <span
-    //         className={`cursor-pointer text-3xl font-bold tracking-wide text-[#b9afa2] ${tinos.className}`}
-    //       >
-    //         Anas <span className="text-[#b9afa2]">N</span>
-    //       </span>
-
-    //       {/* Theme Switch */}
-    //       <Switch />
-    //     </div>
-    //   </header>
-    // </>
+    <header className="fixed top-0 left-0 w-full z-50 bg-[var(--background)]/80 backdrop-blur-sm border-b border-white/5">
+      <div className="max-w-6xl mx-auto h-14 px-4 flex items-center justify-between">
+        <Link href="/" className={`${tinos.className} text-xl font-semibold text-[var(--foreground)]`}>
+          Anas <span className="text-[var(--foreground)]">N</span>
+        </Link>
+        <Switch />
+      </div>
+    </header>
   );
-};
-
-export default Navbar;
+}
