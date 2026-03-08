@@ -1,7 +1,3 @@
-import Image from "next/image";
-import AnasN from "../../public/AnasN.jpg";
-import Button from "../components/button/Button";
-import { Inter } from "next/font/google";
 import "./globals.css";
 // import { Playfair_Display } from "next/font/google";
 // import { Zen_Kaku_Gothic_New } from "next/font/google";
