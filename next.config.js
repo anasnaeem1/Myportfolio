@@ -1,5 +1,15 @@
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["framer-motion"],
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "framer-motion": path.resolve(__dirname, "node_modules/framer-motion"),
+    };
+    return config;
+  },
   images: {
     remotePatterns: [
       {
@@ -8,7 +18,6 @@ const nextConfig = {
       },
     ],
   },
-  // Vercel runs `next build` by default; no extra config required
 };
 
 module.exports = nextConfig;
