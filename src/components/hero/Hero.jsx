@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Anas from "../../../public/Anas.png";
+// import Anas from "../../../public/Anas.png";
 import Button from "../button/Button";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -103,13 +103,13 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-[#b9afa2]/25 via-[#b9afa2]/10 to-transparent rounded-2xl blur-2xl -z-10 scale-110" />
         <div className="absolute -inset-0.5 bg-gradient-to-br from-[#b9afa2]/20 to-transparent rounded-2xl blur-lg -z-10" />
         <div className="relative rounded-2xl overflow-hidden border border-[#b9afa2]/15 shadow-[0_16px_40px_-12px_rgba(185,175,162,0.25)] bg-gradient-to-br from-[#b9afa2]/5 to-transparent backdrop-blur-sm">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#171717]/20 via-transparent to-transparent z-10 pointer-events-none" />
+          <div className="absolute flex items-center justify-center inset-0 bg-gradient-to-t from-[#171717]/20 via-transparent to-transparent z-10 pointer-events-none" />
           <Image
-            src={Anas}
-            height={420}
-            width={420}
+            src="https://res.cloudinary.com/datcr1zua/image/upload/v1777728151/671635019_1320515259412850_4993520274333201661_n-removebg-preview_pcr64m.png"
+            height={400}
+            width={400}
             alt="Anas N - Web Developer"
-            className="rounded-2xl object-contain opacity-100 hover:opacity-95 transition-all duration-500 relative z-0"
+            className="border-2 border-[#b9afa2]/15 object-contain opacity-100 hover:opacity-95 transition-all duration-500 relative z-0"
             priority
           />
         </div>

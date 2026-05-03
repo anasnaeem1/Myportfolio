@@ -19,7 +19,7 @@ const DEFAULT_LAYOUT_OPTIONS = [
 /**
  * Reusable work/portfolio section with layout toggle and project cards.
  * @param {Object} props
- * @param {{ id: number|string, label: string, image: import('next/image').StaticImageData, desc: string, link: string }[]} props.projects
+ * @param {{ id: number|string, slug: string, label: string, image: string, desc: string, url: string }[]} props.projects
  * @param {string} [props.eyebrow] - Small label above title
  * @param {string} [props.title] - Main heading
  * @param {string} [props.subtitle] - Description below title
@@ -101,3 +101,6 @@ export default function WorkSection({
     </div>
   );
 }
+
+/** Case-study page for a single project (`/work/[slug]`). */
+export { default as ProjectCaseStudy } from "./ProjectCaseStudy";

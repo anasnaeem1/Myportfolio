@@ -1,51 +1,16 @@
 "use client";
 import Image from "next/image";
-import idkWhat from "../../../public/idkwhat.png";
-import SocialImage from "../../../public/social.jpg";
-import travelWebsite from "../../../public/travelWebsite.jpg";
 import { Unbounded } from "next/font/google";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { WORK_PROJECTS } from "../../data/workProjects";
 
 const unbounded = Unbounded({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
   style: "normal",
 });
-
-const Work = [
-  {
-    id: 1,
-    label: "Social Media",
-    url: "/",
-    image: SocialImage,
-    desc: "A feature-packed social media app to connect, share, and engage—built with passion and creativity.",
-    color: "from-blue-600 via-purple-600 to-pink-600",
-    accentColor: "text-blue-300",
-    borderColor: "border-blue-500/30",
-  },
-  {
-    id: 2,
-    label: "Real Change",
-    url: "/",
-    image: idkWhat,
-    desc: "Designing beautiful & functional interfaces",
-    color: "from-emerald-600 via-teal-600 to-cyan-600",
-    accentColor: "text-emerald-300",
-    borderColor: "border-emerald-500/30",
-  },
-  {
-    id: 3,
-    label: "Travel Website",
-    url: "/",
-    image: travelWebsite,
-    desc: "A sleek travel website designed for easy exploration, booking, and discovering new destinations.",
-    color: "from-orange-600 via-amber-600 to-yellow-600",
-    accentColor: "text-orange-300",
-    borderColor: "border-orange-500/30",
-  },
-];
 
 const MyWork = () => {
   const sectionRef = useRef(null);
@@ -119,16 +84,16 @@ const MyWork = () => {
         animate={isInView ? "visible" : "hidden"}
         className="flex flex-col md:grid md:grid-cols-2 gap-6 lg:gap-8 mt-8 px-4 md:px-8 w-full max-w-7xl mx-auto relative z-10"
       >
-        {Work.map((project, index) => (
+        {WORK_PROJECTS.map((project, index) => (
           <motion.article
             key={project.id}
             variants={cardVariants}
             whileHover={{ y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="group relative"
+            className="group relative flex flex-col"
             style={{ transformOrigin: "center center" }}
           >
-            <Link href={project.url} className="block">
+            <Link href={`/work/${project.slug}`} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-textGold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717] rounded-2xl">
               {/* Card Container */}
               <div className="relative rounded-2xl overflow-hidden border border-[#b9afa2]/10 bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] shadow-lg hover:shadow-2xl transition-all duration-300">
                 {/* Color Accent Border */}
@@ -148,13 +113,16 @@ const MyWork = () => {
                     className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10`}
                   ></div>
 
-                  <Image
-                    src={project.image}
-                    alt={project.label}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  {/* Taller layer: top of screenshot visible by default; hover pans down */}
+                  <div className="absolute left-0 top-0 h-[200%] w-full transition-transform duration-[1.15s] ease-[cubic-bezier(0.45,0,0.25,1)] will-change-transform group-hover:-translate-y-1/2">
+                    <Image
+                      src={project.image}
+                      alt={project.label}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </figure>
 
                 {/* Content */}
@@ -176,7 +144,7 @@ const MyWork = () => {
                   {/* View Project Link */}
                   <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className={`text-sm ${project.accentColor} font-medium`}>
-                      View Project
+                      View case study
                     </span>
                     <svg
                       className={`w-4 h-4 ${project.accentColor} transform group-hover:translate-x-1 transition-transform duration-300`}
@@ -195,6 +163,16 @@ const MyWork = () => {
                 </figcaption>
               </div>
             </Link>
+            <div className="mt-3 px-1 text-center md:text-left">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-xs font-medium ${project.accentColor} opacity-90 underline-offset-4 hover:underline hover:opacity-100 transition-opacity`}
+              >
+                Open live project ↗
+              </a>
+            </div>
           </motion.article>
         ))}
       </motion.div>

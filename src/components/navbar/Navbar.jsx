@@ -14,10 +14,13 @@ const tinos = Tinos({
   style: "normal",
 });
 
+const SCROLL_BLUR_THRESHOLD = 24;
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isCooldownActive, setIsCooldownActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleMenu = (event) => {
     event.preventDefault();
@@ -36,15 +39,26 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > SCROLL_BLUR_THRESHOLD);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      {/* <div className="relative w-full h-[72px]">
-        <div className="h-[72px] bg-transparent w-full fixed top-0 left-0" />
-      </div> */}
-      <header className="fixed w-full top-0 left-0 bg-transparent z-50">
-        <Menu isMenuOpen={isMenuOpen} />
-        {/* Nav bar (logo + menu icon) always on top so icon never disappears */}
-        <div className="relative z-[60] flex items-center justify-between h-[72px] max-w-6xl mx-auto px-5">
+      <Menu isMenuOpen={isMenuOpen} />
+      <header
+        className={`fixed inset-x-0 top-0 z-[60] h-[72px] transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${
+          scrolled
+            ? "bg-[var(--background)]/80 shadow-[0_1px_0_rgba(255,255,255,0.06)] supports-[backdrop-filter]:backdrop-blur-lg"
+            : "bg-transparent supports-[backdrop-filter]:backdrop-blur-none"
+        }`}
+      >
+        <div className="relative flex h-full max-w-6xl mx-auto items-center justify-between px-5">
           <Link
             href="/"
             className="text-2xl font-semibold tracking-tight main-text-color"
