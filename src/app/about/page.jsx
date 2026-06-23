@@ -5,7 +5,7 @@ import Resume from "../../components/resume/Resume";
 import { motion } from "framer-motion";
 
 const PROFILE_IMAGE =
-  "https://res.cloudinary.com/datcr1zua/image/upload/v1777728151/671635019_1320515259412850_4993520274333201661_n-removebg-preview_pcr64m.png";
+  "https://res.cloudinary.com/datcr1zua/image/upload/v1782239487/726953850_1982541949070797_6428019913512591332_n-removebg-preview_znn77x.png";
 
 const unbounded = Unbounded({
   weight: ["400", "500", "700"],
@@ -85,21 +85,17 @@ const About = () => {
             </div>
 
             <h1
-              className={`${unbounded.className} text-[clamp(3.25rem,10vw,3rem)]font-bold tracking-tight mb-3 leading-[0.92]`}
-              style={{ fontVariationSettings: "'wght' 700" }}
-            >
-              <span className="block main-text-color">Hello</span>
-              <span className="block mt-1 bg-gradient-to-r from-textGold via-[#d4b896] to-[#632128]/90 bg-clip-text text-transparent">
-                I&apos;m Anas
-              </span>
-            </h1>
+  className={`${unbounded.className} text-[clamp(3.5rem,2vw,5rem)] font-bold tracking-tight mb-3 leading-[0.92]`}
+  style={{ fontVariationSettings: "'wght' 700" }}
+>
+  <span className="block main-text-color">Hello</span>
+  <span className="block mt-1 bg-gradient-to-r from-textGold via-[#d4b896] to-[#632128]/90 bg-clip-text text-transparent">
+    I&apos;m Anas
+  </span>
+</h1>
             <p className="main-text-color text-base sm:text-lg opacity-90 mb-2 max-w-lg leading-relaxed">
-            Web developer and creative builder who fixes broken layouts for fun and lowkey enjoys when CSS starts acting up
+              Web developer and creative builder who fixes broken layouts for fun and lowkey enjoys when CSS starts acting up
             </p>
-            <p className="main-text-color/60 text-sm mb-8 max-w-md">
-            React · Next.js · JavaScript · Tailwind CSS · Framer Motion · UI craft
-            </p>
-
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-10">
               {STACK.map((skill) => (
                 <span
@@ -140,7 +136,7 @@ const About = () => {
                   alt="Anas — web developer portrait"
                   width={640}
                   height={800}
-                  sizes="(max-width: 1024px) 90vw, 420px"
+                  sizes="(max-width: 300px) 90vw, 420px"
                   className="w-full h-auto max-h-[min(78vh,540px)] object-contain object-center relative z-0"
                   priority
                 />

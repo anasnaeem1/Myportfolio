@@ -5,7 +5,7 @@ import Hero from "../components/hero/Hero";
 import SkillsSection from "../components/skills/Skills";
 
 export default function Home() {
-  return (
+  return (  
     <main className="overflow-x-hidden relative w-full main-bg-color">
       <div className="scroll-smooth">
         <section className="relative w-full">
