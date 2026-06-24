@@ -52,11 +52,10 @@ const Navbar = () => {
     <>
       <Menu isMenuOpen={isMenuOpen} />
       <header
-        className={`fixed inset-x-0 top-0 z-[60] h-[72px] transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${
-          scrolled
+        className={`fixed inset-x-0 top-0 z-[60] h-[72px] transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${scrolled
             ? "bg-[var(--background)]/80 shadow-[0_1px_0_rgba(255,255,255,0.06)] supports-[backdrop-filter]:backdrop-blur-lg"
             : "bg-transparent supports-[backdrop-filter]:backdrop-blur-none"
-        }`}
+          }`}
       >
         <div className="relative flex h-full max-w-6xl mx-auto items-center justify-between px-5">
           <Link
@@ -67,7 +66,24 @@ const Navbar = () => {
           </Link>
 
           <div className="flex items-center gap-5">
-            <Switch isMenuOpen={isMenuOpen} handleClick={handleMenu} />
+            <ul className="flex gap-6">
+              {[
+                ["Home", "/"],
+                ["About", "/about"],
+                ["Work", "/work"],
+                ["Contact", "/dashboard"]
+              ].map(([name, link]) => (
+                <Link
+                  key={name}
+                  href={link}
+                  className="group relative text-white/70 hover:text-[#b9afa2] transition duration-300"
+                >
+                  {name}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#b9afa2] rounded-full transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
+            </ul>
+            {/* <Switch isMenuOpen={isMenuOpen} handleClick={handleMenu} /> */}
           </div>
         </div>
       </header>

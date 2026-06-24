@@ -105,7 +105,7 @@ const Hero = () => {
         <div className="relative rounded-2xl overflow-hidden border border-[#b9afa2]/15 shadow-[0_16px_40px_-12px_rgba(185,175,162,0.25)] bg-gradient-to-br from-[#b9afa2]/5 to-transparent backdrop-blur-sm">
           <div className="absolute flex items-center justify-center inset-0 bg-gradient-to-t from-[#171717]/20 via-transparent to-transparent z-10 pointer-events-none" />
           <Image
-            src="https://res.cloudinary.com/datcr1zua/image/upload/v1782258089/726717097_2633664780362384_4887427169240770333_n-removebg-preview_fd3luo.png"
+            src="https://res.cloudinary.com/datcr1zua/image/upload/v1782298688/725776090_2432566770573754_6035405815985221411_n-removebg-preview_utdx5j.png"
             height={400}
             width={400}
             alt="Anas N - Web Developer"
