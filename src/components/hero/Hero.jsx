@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 // import Anas from "../../../public/Anas.png";
 import Button from "../button/Button";
 import Link from "next/link";
@@ -37,6 +38,26 @@ const itemVariants = {
 };
 
 const Hero = () => {
+  const [intro, setIntro] = useState("Hey..");
+
+  const thoughts = [
+    "Hey..",
+    "I'm Anas and..",
+    "This is my portfolio",
+    "Hope you like it",
+  ];
+
+  useEffect(() => {
+    let index = 0;
+
+    const timer = setInterval(() => {
+      index = (index + 1) % thoughts.length;
+      setIntro(thoughts[index]);
+    }, 2200);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <header className="md:h-screen py-24 md:py-16 relative flex flex-col lg:flex-row items-center justify-center w-full px-4 md:px-8 lg:px-12 gap-8 md:gap-10 lg:gap-14 max-w-6xl mx-auto">
       {/* Background decorative elements */}
@@ -58,21 +79,82 @@ const Hero = () => {
           variants={itemVariants}
           className="inline-flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-full border border-[#b9afa2]/20 bg-[#b9afa2]/5 backdrop-blur-sm"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#b9afa2] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
           <span className="text-xs main-text-color/70 font-medium">Available for opportunities</span>
         </motion.div>
 
         {/* Main Heading */}
-        <motion.h1
+        <motion.div
           variants={itemVariants}
           className="text-[clamp(28px,5vw,48px)] leading-[1.15] tracking-tight main-text-color font-bold"
         >
-          <span className="block font-light">Hi, I&apos;m</span>
-          <span className="block font-bold mt-0.5">Anas</span>
-          <span className="block mt-1.5 bg-gradient-to-r from-[#b9afa2] via-[#b9afa2] to-[#b9afa2]/60 bg-clip-text text-transparent font-semibold">
+          <div className="flex items-center gap-2">
+
+
+            <motion.span
+              key={intro}
+              initial={{
+                opacity: 0,
+                y: 10,
+                filter: "blur(8px)"
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)"
+              }}
+              exit={{
+                opacity: 0,
+                y: -10
+              }}
+              transition={{
+                duration: .5
+              }}
+              className=" font-bold text-[#b9afa2] "
+            >
+              {intro}
+            </motion.span>
+
+
+            {intro === "thinking" && (
+              <motion.div
+                className="flex gap-1"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                {[0, 1, 2].map(i => (
+                  <motion.span
+                    key={i}
+                    className="w-1.5 h-1.5 rounded-full bg-[#b9afa2]"
+                    animate={{
+                      y: [0, -5, 0]
+                    }}
+                    transition={{
+                      duration: .6,
+                      repeat: Infinity,
+                      delay: i * .15
+                    }}
+                  />
+                ))}
+              </motion.div>
+            )}
+
+          </div>
+
+
+          <motion.h1
+            className="mt-2 bg-gradient-to-r from-[#b9afa2] via-[#d4c9ba] to-[#b9afa2]/60 bg-clip-text text-transparent font-semibold"
+            animate={{
+              opacity: [0.8, 1, 0.8]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity
+            }}
+          >
             Creative Web Developer
-          </span>
-        </motion.h1>
+          </motion.h1>
+        </motion.div>
 
         {/* Description */}
         <motion.p
@@ -85,10 +167,57 @@ const Hero = () => {
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div variants={itemVariants} className="flex justify-start pt-2">
-          <Link href="/about" className="inline-block group">
-            <Button size="md">About me</Button>
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap items-center gap-4 pt-2"
+        >
+
+          {/* About */}
+          <Link
+            href="/about"
+            className="inline-block group"
+          >
+            <Button size="md">
+              About me
+            </Button>
           </Link>
+
+
+          {/* Connect */}
+          <Link
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+            }}
+            className="
+      inline-flex items-center gap-2
+      px-6 py-3
+      rounded-xl
+      border border-[#b9afa2]/30
+      bg-[#b9afa2]/5
+      backdrop-blur-sm
+      text-[#b9afa2]
+      font-medium
+      transition-all duration-300
+      hover:bg-[#b9afa2]/15
+      hover:border-[#b9afa2]/60
+      hover:shadow-[0_0_25px_rgba(185,175,162,0.2)]
+    "
+          >
+            Connect with me
+            <span className="group-hover:translate-x-1 transition">
+              →
+            </span>
+          </Link>
+
         </motion.div>
       </motion.div>
 

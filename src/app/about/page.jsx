@@ -413,7 +413,7 @@ const About = () => {
         </div>
       </section>
 
-      <Resume />
+      {/* <Resume /> */}
     </div>
   );
 };

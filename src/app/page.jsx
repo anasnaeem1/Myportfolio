@@ -1,11 +1,12 @@
 "use client";
 import ServiceSetion from "../components/serviceSection/ServiceSection";
 import MyWork from "../components/work/MyWork";
+import ContactMe from "../components/ContactMe/ContactMe";
 import Hero from "../components/hero/Hero";
 import SkillsSection from "../components/skills/Skills";
 
 export default function Home() {
-  return (  
+  return (
     <main className="overflow-x-hidden relative w-full main-bg-color">
       <div className="scroll-smooth">
         <section className="relative w-full">
@@ -30,6 +31,11 @@ export default function Home() {
         {/* My Work Section */}
         <section className="relative w-full">
           <MyWork />
+        </section>
+
+        {/* My Work Section */}
+        <section className="relative w-full">
+          <ContactMe />
         </section>
       </div>
     </main>
